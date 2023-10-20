@@ -1,3 +1,5 @@
+using ReceivableApi.Data;
+
 namespace ReceivableApi
 {
     public class Program
@@ -7,6 +9,9 @@ namespace ReceivableApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddScoped<IJsonFileLoader, JsonFileLoader>();
+            builder.Services.AddScoped<CountryLoader>();
+            builder.Services.AddScoped<CurrencyLoader>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
