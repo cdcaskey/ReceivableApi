@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceivableApi", "ReceivableApi\ReceivableApi.csproj", "{06E7307E-EFFC-4BA4-A035-5F9D54472250}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceivableApi.Tests", "ReceivableApi.Tests\ReceivableApi.Tests.csproj", "{0ABFB8B1-C4B5-436C-8F55-5057E2E09096}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06E7307E-EFFC-4BA4-A035-5F9D54472250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06E7307E-EFFC-4BA4-A035-5F9D54472250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06E7307E-EFFC-4BA4-A035-5F9D54472250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06E7307E-EFFC-4BA4-A035-5F9D54472250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ABFB8B1-C4B5-436C-8F55-5057E2E09096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ABFB8B1-C4B5-436C-8F55-5057E2E09096}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ABFB8B1-C4B5-436C-8F55-5057E2E09096}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ABFB8B1-C4B5-436C-8F55-5057E2E09096}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6661D89C-CC13-495C-A913-49F4B6BE88FC}
+	EndGlobalSection
+EndGlobal
