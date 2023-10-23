@@ -3,19 +3,19 @@ using ReceivableApi.Data;
 using ReceivableApi.Models;
 using ReceivableApi.Tests.Fakes;
 using Shouldly;
-using static ReceivableApi.Tests.Fakes.FakeCountryFileLoader;
+using static ReceivableApi.Tests.Fakes.FakeCurrencyFileLoader;
 
-namespace ReceivableApi.Tests
+namespace ReceivableApi.Tests.Unit.Data
 {
     [TestFixture]
-    public class CountryLoaderTests
+    public class CurrencyLoaderTests
     {
         [TestCase(LoadType.EmptyJson)]
         [TestCase(LoadType.MalformedJson)]
         public void Load_WhenNoCountriesLoaded_ThrowsException(LoadType loadType)
         {
             // Arrange
-            var loader = new FakeCountryFileLoader(loadType);
+            var loader = new FakeCurrencyFileLoader(loadType);
             var sut = CreateSut(loader);
 
             // Act
@@ -26,7 +26,7 @@ namespace ReceivableApi.Tests
         public void Load_WhenValidCountriesLoaded_ReturnsCountries()
         {
             // Arrange
-            var loader = new FakeCountryFileLoader(LoadType.ValidJson);
+            var loader = new FakeCurrencyFileLoader(LoadType.ValidJson);
             var sut = CreateSut(loader);
 
             // Act
@@ -35,16 +35,16 @@ namespace ReceivableApi.Tests
             // Assert
             var expected = new[]
             {
-                new Country { Name = "Afghanistan", Alpha2Code = "AF" },
-                new Country { Name = "Åland Islands", Alpha2Code = "AX" },
-                new Country { Name = "Albania", Alpha2Code = "AL" },
-                new Country { Name = "Algeria", Alpha2Code = "DZ" },
-                new Country { Name = "American Samoa", Alpha2Code = "AS" }
+                new Currency { Name = "Afghan Afghani", Code = "AFN" },
+                new Currency { Name = "Euro", Code = "EUR" },
+                new Currency { Name = "Albanian Lek", Code = "ALL" },
+                new Currency { Name = "Algerian Dinar", Code = "DZD" },
+                new Currency { Name = "United States Dollar", Code = "USD" }
             };
 
             result.ShouldBe(expected);
         }
 
-        private CountryLoader CreateSut(FakeCountryFileLoader fileLoader) => new(NullLogger<CountryLoader>.Instance, fileLoader);
+        private CurrencyLoader CreateSut(FakeCurrencyFileLoader fileLoader) => new(NullLogger<CurrencyLoader>.Instance, fileLoader);
     }
 }

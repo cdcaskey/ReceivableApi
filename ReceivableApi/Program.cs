@@ -1,4 +1,5 @@
-using ReceivableApi.Data;
+﻿using ReceivableApi.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ReceivableApi
 {
@@ -7,6 +8,8 @@ namespace ReceivableApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<ReceivableApiContext>(options =>
+                options.UseSqlite("Data Source=ReceivablesDatabase.db"));
 
             // Add services to the container.
             builder.Services.AddScoped<IJsonFileLoader, JsonFileLoader>();
