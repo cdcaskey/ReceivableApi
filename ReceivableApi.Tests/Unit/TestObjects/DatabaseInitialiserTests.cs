@@ -15,7 +15,7 @@ namespace ReceivableApi.Tests.Unit.TestObjects
         public void Ctor_WhenCalled_CreatesTestData()
         {
             // Arrange/Act
-            var sut = new DatabaseInitialiser();
+            var sut = new DatabaseInitialiser(true);
             var context = sut.CreateContext();
 
             // Assert

@@ -6,16 +6,16 @@ namespace ReceivableApi.Tests.Fakes
 {
     public class DatabaseInitialiser
     {
-        private const string connectionString = "Data Source=ReceivablesDatabase.db";
+        private const string connectionString = "Data Source=TestReceivablesDatabase.db";
 
         private static readonly object dbLock = new();
         private static bool databaseInitialised;
 
-        public DatabaseInitialiser()
+        public DatabaseInitialiser(bool forceDelete = false)
         {
             lock (dbLock)
             {
-                if (!databaseInitialised)
+                if (forceDelete || !databaseInitialised)
                 {
                     using var context = CreateContext();
 

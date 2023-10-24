@@ -1,5 +1,6 @@
 ﻿using ReceivableApi.Data;
 using Microsoft.EntityFrameworkCore;
+using ReceivableApi.Validators;
 
 namespace ReceivableApi
 {
@@ -15,6 +16,9 @@ namespace ReceivableApi
             builder.Services.AddScoped<IJsonFileLoader, JsonFileLoader>();
             builder.Services.AddScoped<CountryLoader>();
             builder.Services.AddScoped<CurrencyLoader>();
+            builder.Services.AddScoped<AddReceivableValidator>();
+            builder.Services.AddScoped<ReceivableManager>();
+            builder.Services.AddScoped<Func<DateTime>>(s => () => DateTime.Now);
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
