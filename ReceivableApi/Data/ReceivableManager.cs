@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ReceivableApi.Models;
+﻿using ReceivableApi.Models;
 using ReceivableApi.Models.Responses;
 
 namespace ReceivableApi.Data
@@ -63,14 +62,14 @@ namespace ReceivableApi.Data
                 if (receivable.Closed)
                 {
                     summary.ClosedReceivables++;
-                    
+
                     var convertedValue = converter.Convert(receivable.CurrencyCode, targetCurrency, receivable.PaidValue);
                     summary.TotalClosedReceivableValue += convertedValue;
                 }
                 else
                 {
                     summary.OpenReceivables++;
-                    
+
                     var convertedValue = converter.Convert(receivable.CurrencyCode, targetCurrency, receivable.OpeningValue - receivable.PaidValue);
                     summary.TotalOpenReceivableValue += convertedValue;
                 }

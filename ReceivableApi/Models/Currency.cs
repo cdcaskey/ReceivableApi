@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace ReceivableApi.Models
+﻿namespace ReceivableApi.Models
 {
     public class Currency
     {

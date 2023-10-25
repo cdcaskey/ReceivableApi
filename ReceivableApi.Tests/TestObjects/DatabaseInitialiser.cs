@@ -25,7 +25,7 @@ namespace ReceivableApi.Tests.Fakes
                     AddSeedData(context);
 
                     databaseInitialised = true;
-                }    
+                }
             }
         }
 

@@ -1,5 +1,4 @@
-﻿using System.Management;
-using Microsoft.Extensions.Logging.Abstractions;
+﻿using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using ReceivableApi.Data;
 using ReceivableApi.Models;
@@ -56,8 +55,8 @@ namespace ReceivableApi.Tests.Unit.Data
                 Due = new DateTime(2023, 01, 02),
                 DebtorId = debtor.Reference,
                 Debtor = debtor
-            }; 
-            
+            };
+
             var sut = CreateSut();
 
             // Act

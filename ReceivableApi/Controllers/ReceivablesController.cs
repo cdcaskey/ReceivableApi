@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ReceivableApi.Data;
 using ReceivableApi.Models;
 using ReceivableApi.Models.Requests;

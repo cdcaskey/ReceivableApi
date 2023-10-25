@@ -1,7 +1,6 @@
-﻿using ReceivableApi.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using ReceivableApi.Data;
 using ReceivableApi.Validators;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace ReceivableApi
 {

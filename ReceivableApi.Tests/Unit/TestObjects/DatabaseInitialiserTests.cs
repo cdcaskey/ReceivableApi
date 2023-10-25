@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ReceivableApi.Tests.Fakes;
+﻿using ReceivableApi.Tests.Fakes;
 using Shouldly;
 
 namespace ReceivableApi.Tests.Unit.TestObjects
