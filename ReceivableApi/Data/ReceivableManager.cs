@@ -1,14 +1,18 @@
-﻿using ReceivableApi.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using ReceivableApi.Models;
+using ReceivableApi.Models.Responses;
 
 namespace ReceivableApi.Data
 {
     public class ReceivableManager
     {
         private readonly ReceivableApiContext context;
+        private readonly CurrencyConverter converter;
 
-        public ReceivableManager(ReceivableApiContext context)
+        public ReceivableManager(ReceivableApiContext context, CurrencyConverter converter)
         {
             this.context = context;
+            this.converter = converter;
         }
 
         public async Task StoreReceivable(Receivable receivable)
@@ -45,6 +49,34 @@ namespace ReceivableApi.Data
             }
 
             await context.SaveChangesAsync();
+        }
+
+        public ReceivableSummary GetSummary(string targetCurrency)
+        {
+            var summary = new ReceivableSummary()
+            {
+                CurrencyUsed = targetCurrency
+            };
+
+            foreach (var receivable in context.Receivables)
+            {
+                if (receivable.Closed)
+                {
+                    summary.ClosedReceivables++;
+                    
+                    var convertedValue = converter.Convert(receivable.CurrencyCode, targetCurrency, receivable.PaidValue);
+                    summary.TotalClosedReceivableValue += convertedValue;
+                }
+                else
+                {
+                    summary.OpenReceivables++;
+                    
+                    var convertedValue = converter.Convert(receivable.CurrencyCode, targetCurrency, receivable.OpeningValue - receivable.PaidValue);
+                    summary.TotalOpenReceivableValue += convertedValue;
+                }
+            }
+
+            return summary;
         }
     }
 }

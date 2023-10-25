@@ -18,6 +18,7 @@ namespace ReceivableApi
             builder.Services.AddScoped<CurrencyLoader>();
             builder.Services.AddScoped<AddReceivableValidator>();
             builder.Services.AddScoped<ReceivableManager>();
+            builder.Services.AddScoped<CurrencyConverter>();
             builder.Services.AddScoped<Func<DateTime>>(s => () => DateTime.Now);
 
             builder.Services.AddControllers();

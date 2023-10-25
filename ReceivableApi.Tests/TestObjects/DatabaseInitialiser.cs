@@ -73,7 +73,7 @@ namespace ReceivableApi.Tests.Fakes
                 new Receivable
                 {
                     Reference = "001",
-                    CurrencyCode = "GBP",
+                    CurrencyCode = "AFN",
                     Issued = new DateTime(2021, 08, 12),
                     OpeningValue = 12345.67M,
                     PaidValue = 0,
@@ -84,7 +84,7 @@ namespace ReceivableApi.Tests.Fakes
                 new Receivable
                 {
                     Reference = "002",
-                    CurrencyCode = "GBP",
+                    CurrencyCode = "USD",
                     Issued = new DateTime(2021, 09, 21),
                     OpeningValue = 654321,
                     PaidValue = 654321,
@@ -106,7 +106,7 @@ namespace ReceivableApi.Tests.Fakes
                 new Receivable
                 {
                     Reference = "A1",
-                    CurrencyCode = "GBP",
+                    CurrencyCode = "ALL",
                     Issued = new DateTime(2021, 08, 12),
                     OpeningValue = 18124,
                     PaidValue = 0,
@@ -118,7 +118,7 @@ namespace ReceivableApi.Tests.Fakes
                 new Receivable
                 {
                     Reference = "A16",
-                    CurrencyCode = "AUD",
+                    CurrencyCode = "AFN",
                     Issued = new DateTime(2021, 08, 12),
                     OpeningValue = 150000,
                     PaidValue = 0,

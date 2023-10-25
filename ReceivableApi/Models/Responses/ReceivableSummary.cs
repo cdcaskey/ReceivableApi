@@ -2,6 +2,8 @@
 {
     public class ReceivableSummary
     {
+        public string CurrencyUsed { get; set; } = string.Empty;
+
         public int OpenReceivables { get; set; }
 
         public decimal TotalOpenReceivableValue { get; set; }

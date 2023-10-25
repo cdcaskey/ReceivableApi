@@ -1,9 +1,11 @@
 ﻿using System.Management;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using ReceivableApi.Data;
 using ReceivableApi.Models;
 using ReceivableApi.Tests.Fakes;
 using Shouldly;
+using static ReceivableApi.Tests.Fakes.FakeCurrencyFileLoader;
 
 namespace ReceivableApi.Tests.Unit.Data
 {
@@ -184,6 +186,28 @@ namespace ReceivableApi.Tests.Unit.Data
                 x => x.ClosedDate.ShouldBe(newReceivable.ClosedDate)); // 2023-01-01
         }
 
-        private ReceivableManager CreateSut() => new(context);
+        [TestCase("AFN", 111402.49, 363511.67)]
+        [TestCase("EUR", 133682.99, 436214)]
+        [TestCase("ALL", 155963.49, 508916.33)]
+        [TestCase("DZD", 178243.99, 581618.67)]
+        [TestCase("USD", 200524.50, 654321)]
+        public void GetSummary_WhenCalled_CorrectlyCalculatesValuesInSelectedCurrency(string currency, decimal expectedOpenValue, decimal expectedClosedValue)
+        {
+            // Arrange
+            var sut = CreateSut();
+
+            // Act
+            var result = sut.GetSummary(currency);
+
+            // Assert
+            result.ShouldSatisfyAllConditions(
+                x => x.CurrencyUsed.ShouldBe(currency),
+                x => x.OpenReceivables.ShouldBe(4),
+                x => x.TotalOpenReceivableValue.ShouldBe(expectedOpenValue),
+                x => x.ClosedReceivables.ShouldBe(2),
+                x => x.TotalClosedReceivableValue.ShouldBe(expectedClosedValue));
+        }
+
+        private ReceivableManager CreateSut() => new(context, new CurrencyConverter(new CurrencyLoader(NullLogger<CurrencyLoader>.Instance, new FakeCurrencyFileLoader(LoadType.ValidJson))));
     }
 }

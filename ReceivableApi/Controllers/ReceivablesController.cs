@@ -80,7 +80,12 @@ namespace ReceivableApi.Controllers
         [HttpGet("Summary/{currency?}")]
         public ActionResult<ReceivableSummary> GetReceivableSummary(string? currency = DefaultCurrency)
         {
-            return NoContent();
+            if (!currencies.Any(x => x.Code == currency))
+            {
+                return BadRequest();
+            }
+
+            return receivableManager.GetSummary(currency ?? DefaultCurrency);
         }
     }
 }
