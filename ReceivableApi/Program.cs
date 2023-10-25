@@ -1,6 +1,7 @@
 ﻿using ReceivableApi.Data;
 using Microsoft.EntityFrameworkCore;
 using ReceivableApi.Validators;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ReceivableApi
 {
@@ -26,6 +27,13 @@ namespace ReceivableApi
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            // Ensure database is created and up to date
+            using (var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<ReceivableApiContext>();
+                context.Database.Migrate();
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
