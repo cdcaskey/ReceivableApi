@@ -31,7 +31,11 @@ namespace ReceivableApi
             using (var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<ReceivableApiContext>();
-                context.Database.Migrate();
+
+                if (context.Database.GetPendingMigrations().Any())
+                {
+                    context.Database.Migrate();
+                }
             }
 
             // Configure the HTTP request pipeline.

@@ -20,7 +20,7 @@ namespace ReceivableApi.Tests.Fakes
                     using var context = CreateContext();
 
                     context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
+                    context.Database.Migrate();
 
                     AddSeedData(context);
 
