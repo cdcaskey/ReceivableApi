@@ -20,6 +20,8 @@
 
         public string DebtorName { get; set; } = string.Empty;
 
+        public string DebtorReference { get; set; } = string.Empty;
+
         public string? DebtorAddress1 { get; set; }
 
         public string? DebtorAddress2 { get; set; }
